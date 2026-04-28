@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de tareas</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+</head>
+
+<body>
+    <div class="contenedor-ppal">
+        <header>
+            <h1><i class="fa-regular fa-bell"></i>Mi Lista de tareas</h1>
+            <div>
+                <p>Organiza tu dia</p>
+            </div>
+        </header>
+        <main>
+             <form>
+            <input type="text" id="nuevaTarea" placeholder="¿Que tarea quieres agregar?">
+            <button type="submit" class="btn btn-primary">+ Agregar</button>
+            </form>
+            <button type="button" class="btn btn-light" id="btn-get"><i class="fa-regular fa-calendar"></i></i>Todas</button>
+            <button type="button" class="btn btn-light" id="btn-get"><i class="fa-regular fa-clock"></i>Pendientes</button>
+
+            <button type="button" class="btn btn-light" id="btn-get"><i class="fa-regular fa-square-check"></i>Completadas</button>
+            
+            <ul class="list-group mt-4" id="listaTareas">
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+
+                    <button class="btn btn-danger btn-sm"><i class="fa-regular fa-trash-can"></i></button>
+                </li>
+            </ul>
+            <div class="contador">recuadro con contador</div>
+        </main>
+    </div>
+    <footer>
+        <p>DV | Plataformas de Desarrollo | 2026</p>
+    </footer>
+    <script src="js/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

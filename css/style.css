@@ -1,0 +1,49 @@
+* {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+}
+body {
+   
+    background-image:         
+    linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+    url('/app-lista-tareas/img/fondoapp2.jpg');
+    background-size: cover;        
+    background-position: center;   
+    background-repeat: no-repeat;  
+    height: 100vh;
+    
+}
+
+
+
+header, footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+header {
+    height: 15vh;
+    color: white;
+}
+
+main {
+    min-height: 80vh;
+    padding: 16px;
+}
+footer {
+    height: 10vh;
+    background-color: gray;
+    color: white;
+}
+
+.list-group-item {
+    border-radius: 12px;
+    margin-bottom: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.contador {
+    display: flex;
+    background-color: gray;
+}
