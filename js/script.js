@@ -1,7 +1,10 @@
 const input = document.querySelector("#nuevaTarea");
 const form = document.querySelector("form");
 const listaUL = document.querySelector("#listaTareas");
-
+const tareasTot = document.querySelector("#tareasTotales");
+const tareasPend = document.querySelector("#tareasPendientes");
+const tareasComp = document.querySelector("#tareasCompletadas");
+const contadorTareas = document.querySelector(".contador");
 
 const guardarStorage = (array) => {
   localStorage.setItem("listaTareas", JSON.stringify(array));
@@ -19,7 +22,8 @@ const crearUL = (array) => {
 
   array.forEach((tarea, index) => {
     const li = document.createElement("li");
-    li.className = "list-group-item d-flex justify-content-between align-items-center";
+    li.className =
+      "list-group-item d-flex justify-content-between align-items-center";
 
     if (tarea.completada) {
       li.classList.add("completada");
@@ -28,7 +32,7 @@ const crearUL = (array) => {
     const span = document.createElement("span");
     span.textContent = tarea.texto;
 
-
+    
     const btnSuccess = document.createElement("button");
     btnSuccess.className = "btn btn-success btn-sm";
     btnSuccess.innerHTML = '<i class="fa-regular fa-square-check"></i>';
@@ -37,6 +41,7 @@ const crearUL = (array) => {
       tareas[index].completada = !tareas[index].completada;
       guardarStorage(tareas);
       crearUL(tareas);
+      actualizarContador();
     });
 
     const btnDelete = document.createElement("button");
@@ -44,9 +49,10 @@ const crearUL = (array) => {
     btnDelete.innerHTML = '<i class="fa-regular fa-trash-can"></i>';
 
     btnDelete.addEventListener("click", () => {
-      tareas.splice(index, 1); 
+      tareas.splice(index, 1);
       guardarStorage(tareas);
       crearUL(tareas);
+      actualizarContador();
     });
 
 
@@ -68,18 +74,54 @@ form.addEventListener("submit", (e) => {
 
   const tarea = input.value.trim();
   if (tarea === "") return;
-
+  const existe = tareas.some(
+    (t) => t.texto.toLowerCase() === tarea.toLowerCase(),
+  );
+  if (existe) {
+    alert("Esa tarea ya existe");
+    return;
+  }
   input.value = "";
 
   tareas.push({
     texto: tarea,
-    completada: false
+    completada: false,
   });
 
   guardarStorage(tareas);
   crearUL(tareas);
+  actualizarContador();
 });
+
+const aplicarFiltro = (tipo) => {
+  filtro = tipo;
+
+  let listaFiltrada = [];
+
+  if (tipo === "todas") {
+    listaFiltrada = tareas;
+  } else if (tipo === "pendientes") {
+    listaFiltrada = tareas.filter((t) => !t.completada);
+  } else if (tipo === "completadas") {
+    listaFiltrada = tareas.filter((t) => t.completada);
+  }
+
+  crearUL(listaFiltrada);
+};
+
+tareasTot.addEventListener("click", () => aplicarFiltro("todas"));
+
+tareasPend.addEventListener("click", () => aplicarFiltro("pendientes"));
+
+tareasComp.addEventListener("click", () => aplicarFiltro("completadas"));
+
+const actualizarContador = () => {
+  const total = tareas.length;
+  const completadas = tareas.filter((t) => t.completada).length;
+  const pendientes = total - completadas;
+  contadorTareas.textContent = `Total: ${total} | Pendientes: ${pendientes} | Completadas: ${completadas}`;
+};
 
 const tareas = leerStorage();
 crearUL(tareas);
-
+actualizarContador();

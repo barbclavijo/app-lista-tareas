@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista de tareas</title>
+    <title>APP - Lista de tareas</title>
     <link rel="stylesheet" href="css/style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
@@ -15,28 +15,34 @@
 
 <body>
     <div class="contenedor-ppal">
-        <header>
-            <h1><i class="fa-regular fa-bell"></i>Mi Lista de tareas</h1>
-            <div>
-                <p>Organiza tu dia</p>
-            </div>
+        <header class="text-center mb-4">
+            <h1 class="fw-bold">Lista de tareas</h1>
+            <h3>Organizá tu día</h3>
         </header>
-        <main>
-             <form>
-            <input type="text" id="nuevaTarea" placeholder="¿Que tarea quieres agregar?">
-            <button type="submit" class="btn btn-primary">+ Agregar</button>
-            </form>
-            <button type="button" class="btn btn-light" id="btn-get"><i class="fa-regular fa-calendar"></i></i>Todas</button>
-            <button type="button" class="btn btn-light" id="btn-get"><i class="fa-regular fa-clock"></i>Pendientes</button>
+        <main class="d-flex justify-content-center align-items-start mt-5">
+            <div class="card p-4 shadow-lg contenedor-app">
+                <form class="input-group mb-3">
+                    <input type="text" id="nuevaTarea" class="form-control" placeholder="¿Qué tarea querés agregar?">
+                    <button type="submit" class="btn btn-primary">Agregar</button>
+                </form>
+                <div class="row g-2 mb-3">
+                    <div class="col">
+                        <button id="tareasTotales" class="btn btn-outline-secondary btn-sm w-100">Todas</button>
+                    </div>
+                    <div class="col">
+                        <button id="tareasPendientes" class="btn btn-outline-secondary btn-sm w-100">Pendientes</button>
+                    </div>
+                    <div class="col">
+                        <button id="tareasCompletadas"
+                            class="btn btn-outline-secondary btn-sm w-100">Completadas</button>
+                    </div>
+                </div>
 
-            <button type="button" class="btn btn-light" id="btn-get"><i class="fa-regular fa-square-check"></i>Completadas</button>
-            
-            <ul class="list-group mt-4" id="listaTareas">
-                
-                    
-                
-            </ul>
-            <div class="contador">recuadro con contador</div>
+                <ul class="list-group mt-4" id="listaTareas">
+
+                </ul>
+                <div class="contador"></div>
+            </div>
         </main>
     </div>
     <footer>
